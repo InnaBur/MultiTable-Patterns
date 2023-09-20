@@ -1,7 +1,6 @@
 package com.task2;
 
-import com.task2.Factory.AscendingList;
-import com.task2.Factory.DescendingList;
+import com.task2.Factory.ListFactoryCreator;
 import com.task2.Factory.ListOfMultipliersFactory;
 import com.task2.Strategy.NumberProcessor;
 
@@ -30,13 +29,8 @@ public class DataProcessing {
     }
 
     public List<Double> getListWithMultipliers(double min, double max, double increment) {
-        ListOfMultipliersFactory list;
-        if (min <= max) {
-            list = new AscendingList();
-        } else {
-            list = new DescendingList();
-        }
-        return list.createList(min, max, increment);
+        ListOfMultipliersFactory listFactory = ListFactoryCreator.createListFactory(min, max);
+        return listFactory.createList(min, max, increment);
     }
 
     public String readOutputFormat() {

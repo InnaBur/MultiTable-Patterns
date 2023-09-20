@@ -17,13 +17,13 @@ public class NumberProcessor {
         numbers.put("float", new FloatNumber());
         numbers.put("long", new LongNumber());
         numbers.put("byte", new ByteNumber());
-        numbers.put(null, new IntegerNumber());
     }
 
     public Number parseNumber(String value, String outputFormat) {
         NumberProcessorStrategy numberProcessorStrategy = numbers.get(outputFormat);
         if (numberProcessorStrategy == null) {
-            throw new NumberFormatException("Unsupported type");
+            logger.info("{} - Unsupported type. Type is currently in use -  Integer", outputFormat);
+            numberProcessorStrategy = new IntegerNumber();
         }
         try {
             return numberProcessorStrategy.parseNumber(value);
@@ -37,7 +37,7 @@ public class NumberProcessor {
     public Number resultReturning(double value, String outputFormat) {
         NumberProcessorStrategy numberProcessorStrategy = numbers.get(outputFormat);
         if (numberProcessorStrategy == null) {
-            throw new NumberFormatException("Unsupported type");
+            numberProcessorStrategy = new IntegerNumber();
         }
         try {
             return numberProcessorStrategy.result(value);
