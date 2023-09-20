@@ -9,7 +9,7 @@ import java.util.Map;
 public class NumberProcessor {
 
     private static final Logger logger = LoggerFactory.getLogger(NumberProcessor.class);
-    private Map<String, NumberProcessorStrategy> numbers = new HashMap<>();
+    private final Map<String, NumberProcessorStrategy> numbers = new HashMap<>();
 
     public NumberProcessor() {
         numbers.put("int", new IntegerNumber());
