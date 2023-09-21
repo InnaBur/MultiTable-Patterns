@@ -29,7 +29,7 @@ public class DataProcessing {
     }
 
     public List<Double> getListWithMultipliers(double min, double max, double increment) {
-        ListOfMultipliersFactory listFactory = ListFactoryCreator.createListFactory(min, max);
+        ListOfMultipliersFactory listFactory = new ListFactoryCreator().createListFactory(min, max);
         return listFactory.createList(min, max, increment);
     }
 

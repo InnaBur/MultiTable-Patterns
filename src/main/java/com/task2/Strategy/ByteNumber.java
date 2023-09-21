@@ -11,7 +11,7 @@ public class ByteNumber implements NumberProcessorStrategy {
         if (result <= Byte.MAX_VALUE && result >= Byte.MIN_VALUE) {
             return (byte) result;
         } else {
-            throw new ArithmeticException("byte overflow resulting in incorrect value");
+            throw new NumberFormatException("byte overflow resulting in incorrect value");
         }
     }
 }
